@@ -17,20 +17,78 @@
         <span class="brand-icon">🌿</span>
         <h1>PantryPal</h1>
       </div>
-        <p class="tagline">Tell me what's in your kitchen. I'll take care of dinner.</p>
+        <p class="tagline">Tell me what ingredients you have on hand. I'll figure out what to cook.</p>
     </header>
     <main class="main-layout">
         <section class="shelf-panel">
-            <h2>My Pantry Shelf</h2>
-            <p class="placeholder-text">Ingredients will appear here.</p>
-        </section>
-        <section class="chat-panel">
-            <h2>Chef Sam</h2>
-            <div id="chat-message" class="chat-messages">
-                <div class="message bot-message">
-                    Hello! What ingredients do you have in your fridge or pantry right now?
+            <div class="panel-header">
+            <div>
+                <h2>My Pantry Shelf</h2>
+                <p class="panel-subtitle">Items currently in your kitchen</p>
+            </div>
+            <span id="item-count" class="badge">0 items</span>
+            </div>
+            <form id="ingredient-form" class="ingredient-form">
+                <input
+                type="text"
+                id="ingredient-input"
+                placeholder="Add ingredient (e.g., eggs, garlic)..."
+                autocomplete="off"
+                />
+                <button type="submit" class="btn btn-primary" id="add-btn">+ Add</button>
+            </form>
+            <div class="quick-adds">
+                <span class="quick-title">Common staples:</span>
+                <div class="quick-chips">
+                    <button type="button" class="quick-chip">+ Eggs</button>
+                    <button type="button" class="quick-chip">+ Garlic</button>
+                    <button type="button" class="quick-chip">+ Onion</button>
+                    <button type="button" class="quick-chip">+ Rice</button>
+                    <button type="button" class="quick-chip">+ Pasta</button>
+                    <button type="button" class="quick-chip">+ Mustard Oil</button>
                 </div>
             </div>
+            <div id="pantry-list" class="pantry-list">
+                <div class="empty-state">
+                    <span class="empty-icon">🥣</span>
+                    <p>Your shelf is empty.<br>Add ingredients above to start!</p>
+                </div>
+            </div>
+            <div class="shelf-actions">
+                <button id="find-recipes-btn" class="btn btn-accent" disabled>
+                    🔍 Find Recipes
+                </button>
+                <button id="clear-shelf-btn" class="btn btn-text">
+                    Clear All
+                </button>
+            </div>
+        </section>
+        <section class="chat-panel">
+            <div class="bot-header">
+                <div class="bot-avatar">👨‍🍳</div>
+                <div class="bot-status-info">
+                    <h2>Chef Supriya</h2>
+                    <p class="bot-status"><span class="status-dot"></span>Ready in the kitchen</p>
+                </div>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-sender">Chef Supriya</div>
+                    <div class="message-content">
+                        Welcome to the kitchen! Toss in whatever ingredients you have in your fridge or pantry on the left, or ask me for cooking tips.
+                    </div>
+                </div>
+            </div>
+            <div id="recipe-results" class="recipe-resultas hidden"></div>
+            <form id="chat-form" class="chat-form">
+                <input
+                type="text"
+                id="chat-input"
+                placeholder="Ask Supriya: 'What can I replace sour cream with?'..."
+                autocomplete="off"
+                />
+                <button type="submit" class="btn btn-primary" id="chat-send-btn">Send</button>
+            </form>
         </section>
     </main>
 </div>
