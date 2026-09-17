@@ -1,0 +1,94 @@
+:root {
+    --bg-canvas: #FBF8F3;
+    --bg-surface: #FFFFFF;
+    --border-subtle: #EBE4D8;
+    --color-primary: #334E3C;
+    --color-accent: #C85A32;
+    --color-text: #2C2A29;
+    --color-muted: #6B726A;
+    --font-serif: 'Lora', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --radius-card: 14px;
+    --radius-pill: 9999px;
+    --shadow-warm: 0 4px 16px rgba(44, 42, 41, 0.05);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: var(--bg-canvas);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+#app {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+.site-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+.brand h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+.brand-icon {
+    font-size: 1.8rem;
+}
+.tagline {
+    color: var(--color-muted);
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+}
+.shelf-panel, .chat-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-warm);
+}
+.shelf-panel h2, .chat-panel h2 {
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.placeholder-text {
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.message {
+    padding: 0.8rem 1.1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    max-width: 85%;
+}
+.bot-message {
+    background-color: #F3EFE8;
+    color: var(--color-text);
+    border-left: 3px solid var(--color-primary);
+}
+
+

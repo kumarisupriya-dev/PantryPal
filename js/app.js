@@ -1,0 +1,1 @@
+console.log("PantryPal initialized successfully.");
