@@ -213,11 +213,6 @@ input[type="text"]:focus {
     padding: 2.5rem 1rem;
     font-size: 0.9rem;
 }
-.empty-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.4rem;
-}
 .ingredient-tag {
     background-color: var(--bg-surface-subtle);
     color: var(--color-primary);
