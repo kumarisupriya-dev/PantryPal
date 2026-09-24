@@ -1,5 +1,6 @@
 import {loadPantry, savePantry} from "./storage.js";
 import {generateBotReply} from "./bot.js";
+import {fetchRecipes, findMatchingRecipes} from "./recipes.js";
 
 const state = {ingredients: loadPantry()};
 const form = document.getElementById('ingredient-form');
@@ -113,6 +114,59 @@ function handleChatSubmit(text) {
         appendMessage('Chef Supriya', reply, false);
     }, 600);
 }
+async function showRecipeRecommendations() {
+    if (state.ingredients.length === 0) return;
+    showTypingIndicator();
+    const allRecipes = await fetchRecipes();
+    const matchedRecipes = findMatchingRecipes(state.ingredients, allRecipes);
+    setTimeout(() => {
+        removeTypingIndicator();
+        if (matchedRecipes.length === 0) {
+            appendMessage(
+                'Chef Supriya', `I couldn't find a direct for those exact items yet. Try adding a staple like **rice**, **pasta**, or **eggs**!`,
+                false
+            );
+            return;
+        }
+        const cardsHtml = matchedRecipes.map(recipe => {
+            const isPerfect = recipe.matchPercent === 100;
+            const matchPill = isPerfect
+            ? `<span class="match-pill match-perfect">100% Match • Ready!</span>`
+            : `<span class="match-pill match-partial">${recipe.matchPercent}% Match</span>`;
+            const missingText = recipe.missing.length > 0
+            ? `<div class="missing-tag">Missing: ${recipe.missing.join(', ')}</div>`
+            : `<div class="have-tag">All ingredients in pantry!</div>`;
+            return `
+            <div class="recipe-card" data-recipe-id="${recipe.id}">
+            <div class="recipe-card-top">
+            <h4 class="recipe-card-title">${recipe.title}</h4>
+            ${matchPill}
+        </div>
+        <p class="recipe-desc">${recipe.description}</p>
+        <div class="ingredient-breakdown">
+        <div class="have-tag">Have: ${recipe.matched.join(', ')}</div>
+        ${missingText}
+        </div>
+        <button type="button" class="cook-now-btn" data-recipe-id="${recipe.id}">
+        Start Cooking (${recipe.prepTime}) &rarr;
+</button>
+</div>
+`;
+        }).join('');
+        const introText = `I found **${matchedRecipes.length}** recipes you can make! Dishes with higher match scores are listed first:`;
+        const containerEl = document.createElement('div');
+        containerEl.className = 'message bot-message';
+        containerEl.innerHTML = `
+        <div class="message-sender">Chef Supriya</div>
+        <div class="message-content">
+        <p>${introText}</p>
+        <div class="recipe-card-list">${cardsHtml}</div>
+     </div>
+`;
+        chatMessages.appendChild(containerEl);
+        scrollChatToBottom();
+    }, 500);
+}
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const value = input.value;
@@ -140,5 +194,8 @@ clearShelfBtn.addEventListener('click', () => {
 chatForm.addEventListener('submit', (e) => {
     e.preventDefault();
     handleChatSubmit(chatInput.value);
+});
+findRecipesBtn.addEventListener('click', () => {
+    showRecipeRecommendations();
 });
 renderPantry();

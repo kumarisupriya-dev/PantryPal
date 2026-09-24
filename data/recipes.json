@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "id": "garlic-butter-rice",
+    "title": "Aromatic Garlic Butter Rice",
+    "category": "Quick Comfort",
+    "prepTime": "15 mins",
+    "ingredients": ["rice", "garlic", "butter", "onion"],
+    "description": "Fragrant toasted rice tossed with golden sauteed garlic and rich melted butter.",
+    "steps": [
+      "Mince 4 cloves of garlic and finely dice half an onion.",
+      "Melt 2 tablespoons of butter in a skillet over medium heat.",
+      "Saute the garlic and onion until golden and fragrant (about 3 minutes).",
+      "Add 2 cups of cooked rice to the pan and toss evenly with the butter sauce.",
+      "Season with salt and peeper to taste, and serve hot."
+    ],
+    "timers": [0, 0, 3, 0, 0]
+  },
+  {
+    "id": "classic-egg-bhurji",
+    "title": "Homestyle Spiced Egg Bhurji",
+    "category": "Indian Street Food",
+    "prepTime": "12 mins",
+    "ingredients": ["eggs", "onion", "garlic", "mustard oil"],
+    "description": "Soft scrambled eggs gently spiced and sauteed with caramelized onions and pungent mustard oil.",
+    "steps": [
+      "Heat 1 tablespoon of mustard oil in pan until lightly smoking, then reduce to medium.",
+      "Add finely chopped onions and minced garlic. Saute until golden brown (about 4 minutes).",
+      "Crack 3 eggs into a bowl, whisk lightly with a pinch of salt.",
+      "Pour whisked eggs into pan and stir continuously for 2-3 minutes until soft curds form.",
+      "Remove from heat immediately to keep eggs tender. Serve with warm bread or rice."
+    ],
+    "timers": [0, 4, 0, 3, 0]
+  },
+  {
+    "id": "aglio-e-olio",
+    "title": "Classic Spaghetti Aglio e Olio",
+    "category": "Italian Classic",
+    "prepTime": "15 mins",
+    "ingredients": ["pasta", "garlic", "olive oil"],
+    "description": "A timeless Italian staple: al dente pasta coated in garlic-infused olive oil with gentle chili heat.",
+    "steps": [
+      "Bring a large pot of salted water to a rolling boil and cook pasta until al dente (about 8-10 minutes).",
+      "While pasta cooks, thinly slice 5 cloves of garlic.",
+      "Heat 1/4 cup of olive oil in a wide pan over low-medium heat. Add garlic and sizzle gently until pale golden (about 3 minutes).",
+      "Transfer cooked pasta directly into the garlic oil along with 2 tablespoons of pasta water.",
+      "Toss vigorously for 1 minute until an emulsified glossy sauce coats every strand."
+    ],
+    "timers": [9, 0, 3, 0, 1]
+  },
+  {
+    "id": "crispy-egg-fried-rice",
+    "title": "Pantry Egg Fried Rice",
+    "category": "Quick Dinner",
+    "prepTime": "15 mins",
+    "ingredients": ["rice", "eggs", "garlic", "onion", "mustard oil"],
+    "description": "High-heat skillet fried rice with scrambled eggs, caramelized aromatics, and savory depth.",
+    "steps": [
+      "Heat 1 tablespoon of oil in a wok or heavy skillet over high heat.",
+      "Crack in 2 eggs and scramble quickly for 45 seconds, then set eggs aside on a plate.",
+      "Add another splash of oil, toss in minced garlic and onions. Stir-fry for 2 minutes.",
+      "Add chilled cooked rice, breaking up clumps with a spatula.",
+      "Fold the scrambled eggs back in, season with salt and pepper, and stir-fry for 2 more minutes."
+    ],
+    "timers": [0, 1, 2, 0, 2]
+  },
+  {
+    "id": "simple-french-omelette",
+    "title": "Silky French Omelette",
+    "category": "Breakfast",
+    "prepTime": "8 mins",
+    "ingredients": ["eggs", "butter"],
+    "description": "Velvety, pale-gold rolled omelette with a soft, custard-like center.",
+    "steps": [
+      "Beat 3 eggs vigorously with a pinch of salt until completely smooth with no streaks.",
+      "Melt 1 tablespoon of butter in an 8-inch non-stick skillet over medium-low heat without browning.",
+      "Pour eggs in and shake the pan continuously in small circular motions while stirring with a fork.",
+      "When the eggs are nearly set but still moist on top, gently roll into a cylinder.",
+      "Slide onto a plate seam-side down and rub the top with a silver of cold butter for shine."
+    ],
+    "timers": [0, 0, 2, 0, 0]
+  },
+  {
+    "id": "caramelized-onion-pasta",
+    "title": "Golden Caramelized Onion Pasta",
+    "category": "Comfort Food",
+    "prepTime": "20 mins",
+    "ingredients": ["pasta", "onion", "butter", "garlic"],
+    "description": "Sweet, deeply browned onions melted down with garlic butter toasted with al dente pasta.",
+    "steps": [
+      "Thinly slice 2 large onions.",
+      "Melt 2 tablespoons of butter in a pan over low heat, add onions and cook slowly for 12-15 minutes until sweet and deep golden.",
+      "Cook pasta in salted boiling water until tender.",
+      "Stir 2 minced garlic cloves into the caramelized onions for the final minute.",
+      "Combine pasta with the onion sauce and a splash of cooking water."
+    ],
+    "timers": [0, 14, 8, 1, 0]
+  }
+]
