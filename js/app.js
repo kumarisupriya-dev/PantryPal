@@ -1,6 +1,7 @@
 import {loadPantry, savePantry} from "./storage.js";
 import {generateBotReply} from "./bot.js";
 import {fetchRecipes, findMatchingRecipes} from "./recipes.js";
+import {openCookingMode} from "./cooking.js";
 
 const state = {ingredients: loadPantry()};
 const form = document.getElementById('ingredient-form');
@@ -208,6 +209,17 @@ chatMessages.addEventListener('click', (e) => {
     if (missingChip) {
         const ingredient = missingChip.getAttribute('data-ingredient');
         handleChatSubmit(`What can I replace ${ingredient} with?`);
+    }
+});
+chatMessages.addEventListener('click', async (e) => {
+    const cookBtn = e.target.closest('.cook-now-btn');
+    if (cookBtn) {
+        const recipeId = cookBtn.getAttribute('data-recipe-id');
+        const allRecipes = await fetchRecipes();
+        const recipe = allRecipes.find(r => r.id === recipeId);
+        if (recipe) {
+            openCookingMode(recipe);
+        }
     }
 });
 renderPantry();

@@ -91,6 +91,49 @@
         </section>
     </main>
 </div>
+<div id="cooking-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+        <div class="modal-header">
+            <div>
+                <span class="modal-badge">Cooking Mode</span>
+                <h2 id="modal-recipe-title">Recipe Title</h2>
+            </div>
+            <button id="modal-close-btn" class="modal-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="step-progress-wrapper">
+            <div class="progress-bar-track">
+                <div id="modal-progress-bar" class="step-counter"></div>
+            </div>
+            <span id="modal-step-counter" class="step-counter">Step 1 of 5</span>
+        </div>
+        <div class="modal-body">
+            <div id="step-content-view">
+                <div class="step-card">
+                    <span class="step-number-tag" id="modal-step-pill">Step 1</span>
+                    <p id="modal-step-text" class="step-text">Step instructions will go here...</p>
+                </div>
+                <div id="step-timer-box" class="timer-box hidden">
+                    <div class="timer-label">Step Timer</div>
+                    <div id="timer-display" class="timer-digits">03:00</div>
+                    <div class="timer-controls">
+                        <button type="button" id="timer-toggle-btn" class="btn btn-primary btn-sm">Start</button>
+                        <button type="button" id="timer-reset-btn" class="btn btn-text btn-sm">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div id="celebration-view" class="celebration-view hidden">
+                <h3>Bon Apppétit!</h3>
+                <p>You have finished cooking this dish. Enjoy your meal!</p>
+                <button type="button" id="modal-finish-btn" class="btn btn-accent">Return to Kitchen</button>
+            </div>
+        </div>
+        <div class="modal-footer" id="modal-nav-footer">
+            <button type="button" id="modal-prev-btn" class="btn btn-text" disabled>&larr; Previous Step</button>
+            <button type="button" id="modal-next-btn" class="btn btn-primary">Next Step &rarr;</button>
+        </div>
+    </div>
+</div>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>
