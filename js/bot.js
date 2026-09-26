@@ -1,15 +1,15 @@
 const SUBSTITUTIONS = {
-    "sour cream": "You have replace sour cream with Greek yogurt (1:1 ratio), or cottage cheese blended with a splash of lemon juice.",
-    "eggs" : "For baking, replace 1 egg with 1/4 cup unsweetened applesauce, half a mashed banana, or 1 tbsp chia seeds soaked in 3 tbsp water.",
-    "butter" : "In baking, use equal amounts of coconut oil or applesauce. In cooking/sauteing, olive oil or ghee works wonderfully.",
-    "milk" : "You can substitute with oat milk, almond milk, soy milk (1:1), or water with a pat of butter.",
-    "buttermilk" : "Stir 1 tablespoon of lemon juice or white vinegar into 1 cup of regular milk and let sit for 5 minutes.",
-    "garlic" : "1/8 teaspoon of garlic powder replaces roughly 1 fresh clove.",
-    "onion" : "1 tablespoon of onion powder or dried minced onion equals about 1 medium fresh onion.",
-    "olive oil" : "Vegetable oil, canola oil, avocado oil, or melted butter can step in.",
-    "mustard oil" : "If unavailable, you can substitute with sesame oil or regular vegetable oil with a pinch of crushed mustard seeds.",
-    "heavy cream" : "Combine 3/4 cup whole milk with 1/4 cup melted unsalted butter.",
-    "breadcrumbs" : "Crushed crackers, rolled oats, or toasted panko breadcrumbs make great binders."
+    "butter": "In sauteing, use equal amounts of olive oil, ghee, or vegetable oil. In baking, use coconut oil or applesauce.",
+    "mustard oil": "Substitute with olive oil, sesame oil, or neutral vegetable oil with a pinch of crushed mustard seeds.",
+    "olive oil": "Canola oil, sunflower oil, avocado oil, or melted butter work as great substitutes.",
+    "eggs": "For binding, use 1/4 cup unsweetened applesauce, half a mashed banana, or 1 tbsp ground chia/flax with 3 tbsp water.",
+    "garlic": "1/8 teaspoon of garlic powder replaces roughly 1 fresh clove. Chives or minced shallots also work well.",
+    "onion": "1 tablespoon of onion powder, 2 small shallots, or leeks/scallions replace 1 medium fresh onion.",
+    "pasta": "Egg noodles, ramen noodles, or rice can step in as a comfort starch base.",
+    "rice": "Quinoa, couscous, or riced vegetables make great grains to carry sauces.",
+    "sour cream": "Use Greek Yogurt (1:1 ratio), or cottage cheese blended with a splash of lemon juice.",
+    "milk": "You can substitute with oat milk, almond milk, soy milk (1:1), or water with a small pat of butter.",
+    "heavy cream": "Combine 3/4 cup whole milk with 1/4 cup melted unsalted butter."
 };
 export function generateBotReply(userText, currentIngredients = []) {
     const query = userText.toLowerCase().trim();
@@ -17,7 +17,7 @@ export function generateBotReply(userText, currentIngredients = []) {
       if (currentIngredients.length > 0) {
           return `Hey there! I see you currently have ${currentIngredients.join(',')} on your shelf. Ready to find something to cook, or have a specific question?`;
       }
-      return "Hello! I'm here to help you turn whatever is in your kithcen into a great meal. Add a few ingredients on the left, or ask me for cooking tips!";
+      return "Hello! I'm here to help you turn whatever is in your kitchen into a great meal. Add a few ingredients on the left, or ask me for cooking tips!";
   }
     const isPantryQuery =
         query.includes("my ingredients") ||

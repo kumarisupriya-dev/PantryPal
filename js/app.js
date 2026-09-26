@@ -123,7 +123,7 @@ async function showRecipeRecommendations() {
         removeTypingIndicator();
         if (matchedRecipes.length === 0) {
             appendMessage(
-                'Chef Supriya', `I couldn't find a direct for those exact items yet. Try adding a staple like **rice**, **pasta**, or **eggs**!`,
+                'Chef Supriya', `I couldn't find a direct recipe for those exact items yet. Try adding a staple like **rice**, **pasta**, or **eggs**!`,
                 false
             );
             return;
@@ -134,8 +134,13 @@ async function showRecipeRecommendations() {
             ? `<span class="match-pill match-perfect">100% Match • Ready!</span>`
             : `<span class="match-pill match-partial">${recipe.matchPercent}% Match</span>`;
             const missingText = recipe.missing.length > 0
-            ? `<div class="missing-tag">Missing: ${recipe.missing.join(', ')}</div>`
-            : `<div class="have-tag">All ingredients in pantry!</div>`;
+            ? `<div class="missing-breakdown">
+                <span class="missing-tag">Missing:</span>
+                <div class="missing-chips-container">
+                ${recipe.missing.map(ing => `<button type="button" class="missing-chip" data-ingredient="${ing}">${ing}<small>swap?</small></button>`).join('')}
+            </div>
+          </div>`
+                : `<div class="have-tag">All ingredients in pantry!</div>`;
             return `
             <div class="recipe-card" data-recipe-id="${recipe.id}">
             <div class="recipe-card-top">
@@ -197,5 +202,12 @@ chatForm.addEventListener('submit', (e) => {
 });
 findRecipesBtn.addEventListener('click', () => {
     showRecipeRecommendations();
+});
+chatMessages.addEventListener('click', (e) => {
+    const missingChip = e.target.closest('.missing-chip');
+    if (missingChip) {
+        const ingredient = missingChip.getAttribute('data-ingredient');
+        handleChatSubmit(`What can I replace ${ingredient} with?`);
+    }
 });
 renderPantry();
