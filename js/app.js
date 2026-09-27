@@ -1,3 +1,4 @@
+import {initTheme} from "./theme.js";
 import {loadPantry, savePantry} from "./storage.js";
 import {generateBotReply} from "./bot.js";
 import {fetchRecipes, findMatchingRecipes} from "./recipes.js";
@@ -14,6 +15,7 @@ const quickChips = document.querySelectorAll('.quick-chip');
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
 const chatMessages = document.getElementById('chat-messages');
+initTheme();
 
 function formatIngredientName(name) {
     const trimmed = name.trim();

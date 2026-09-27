@@ -19,6 +19,46 @@
     --shadow-subtle: 0 2px 10px rgba(44, 42, 41, 0.04);
     --shadow-warm: 0 6px 24px rgba(44, 42, 41, 0.06);
 }
+[data-theme="dark"] {
+    --bg-canvas: #1C1917;
+    --bg-surface: #272421;
+    --bg-surface-subtle: #332F2B;
+    --border-subtle: #413C36;
+    --border-strong: #575048;
+    --color-primary: #6E9E76;
+    --color-primary-hover: #81B389;
+    --color-accent: #E27B54;
+    --color-accent-hover: #EC916D;
+    --color-text: #EDE7E0;
+    --color-muted: #9E978E;
+    --color-light: #201D1A;
+    --shadow-subtle: 0 2px 10px rgba(0, 0, 0, 0.25);
+    --shadow-warm: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+[dark-theme="dark"] input[type="text"]:focus {
+    background-color: var(--bg-surface);
+}
+[data-theme="dark"] .timer-box {
+    background-color: var(--bg-surface-subtle);
+    border-color: var(--border-subtle);
+}
+[data-theme="dark"] .match-perfect {
+    background-color: rgba(110, 158, 118, 0.15);
+    color: #92CBA1;
+    border-color: rgba(110, 158, 118, 0.35);
+}
+[data-theme="dark"] .match-partial {
+    background-color: rgba(226, 123, 84, 0.15);
+    color: #F1A180;
+    border-color: rgba(226, 123, 84, 0.35);
+}
+[dark-theme="dark"] .missing-chip {
+    background-color: rgba(226, 123, 84, 0.15);
+    border-color: var(--color-accent);
+}
+[data-theme="dark"] .quick-chip:hover {
+    background: var(--bg-surface-subtle);
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -676,4 +716,46 @@ input[type="text"]:focus {
     .modal-footer .btn {
         width: 100%;
     }
+}
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+.theme-segmented {
+    display: inline-flex;
+    background-color: var(--bg-surface-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    padding: 3px;
+    gap: 2px;
+    box-shadow: var(--shadow-subtle);
+}
+.theme-seg-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: all 0.2s ease;
+}
+.theme-seg-btn:hover {
+    color: var(--color-text);
+}
+.theme-seg-btn.active {
+    background-color: var(--bg-surface);
+    color: var(--color-text);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+[dark-theme="dark"] .theme-seg-btn.active {
+    background-color: var(--bg-surface);
+    color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
