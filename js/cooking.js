@@ -146,3 +146,13 @@ nextBtn.addEventListener('click', () => {
 });
 timerToggleBtn.addEventListener('click', toggleTimer);
 timerRestBtn.addEventListener('click', resetTimer);
+window.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+        closeCookingMode();
+    } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
+        nextBtn.click();
+    } else if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
+        prevBtn.click();
+    }
+});

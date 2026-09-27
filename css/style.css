@@ -637,3 +637,43 @@ input[type="text"]:focus {
     border-top: 1px solid var(--border-subtle);
     padding-top: 1.25rem;
 }
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+    background: #D9CEBF;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+}
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.6rem;
+    }
+    .site-header {
+        margin-bottom: 1.5rem;
+    }
+    .brand-h1 {
+        font-size: 1.85rem;
+    }
+    .shelf-panel, .chat-panel {
+        padding: 1.2rem;
+    }
+    .modal-container {
+        padding: 1.3rem;
+    }
+    .timer-digits {
+        font-size: 1.9rem;
+    }
+    .modal-footer {
+        flex-direction: column-reverse;
+        gap: 0.6rem;
+    }
+    .modal-footer .btn {
+        width: 100%;
+    }
+}
