@@ -77,8 +77,11 @@
                 <div class="bot-avatar">👨‍🍳</div>
                 <div class="bot-status-info">
                     <h2>Chef Supriya</h2>
-                    <p class="bot-status"><span class="status-dot"></span>Ready in the kitchen</p>
+                    <p id="bot-status" class="bot-status"><span class="status-dot"></span>Ready in the kitchen</p>
                 </div>
+                <button type="button" id="api-key-btn" class="api-settings-btn" title="Configure Gemini AI">
+                    AI Key
+                </button>
             </div>
             <div id="chat-messages" class="chat-messages">
                 <div class="message bot-message">
@@ -133,7 +136,7 @@
                 </div>
             </div>
             <div id="celebration-view" class="celebration-view hidden">
-                <h3>Bon Apppétit!</h3>
+                <h3>Bon Appétit!</h3>
                 <p>You have finished cooking this dish. Enjoy your meal!</p>
                 <button type="button" id="modal-finish-btn" class="btn btn-accent">Return to Kitchen</button>
             </div>
@@ -141,6 +144,40 @@
         <div class="modal-footer" id="modal-nav-footer">
             <button type="button" id="modal-prev-btn" class="btn btn-text" disabled>&larr; Previous Step</button>
             <button type="button" id="modal-next-btn" class="btn btn-primary">Next Step &rarr;</button>
+        </div>
+    </div>
+</div>
+<div id="api-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container api-modal-container">
+        <div class="modal-header">
+            <div>
+                <span class="modal-badge">AI Settings</span>
+                <h2>Google Gemini Integration</h2>
+            </div>
+            <button id="api-modal-close" class="modal-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="api-help-text">
+                Connect your free Gemini API key to unlock open-ended cooking advice, dynamic recipe ideas, and culinary questions for Chef Supriya.
+            </p>
+            <div class="api-input-group">
+                <label for="gemini-api-key-input">Gemini API Key:</label>
+                <input
+                type="password"
+                id="gemini-api-key-input"
+                placeholder="AIzaSy..."
+                autocomplete="off"
+                />
+                <small class="api-subtext">
+                    Keys are saved locally in your browser. Get a free key at
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>
+                </small>
+            </div>
+        </div>
+        <div class="modal-footer api-modal-footer">
+            <button type="button" id="api-key-clear" class="btn btn-text">Clear Key</button>
+            <button type="button" id="api-key-save" class="btn btn-primary">Save Key</button>
         </div>
     </div>
 </div>

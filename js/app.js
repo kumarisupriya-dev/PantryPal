@@ -1,3 +1,4 @@
+import {getSavedApiKey, saveApiKey, hasApiKey, askGeminiChef} from "./gemini.js";
 import {initTheme} from "./theme.js";
 import {loadPantry, savePantry} from "./storage.js";
 import {generateBotReply} from "./bot.js";
@@ -106,11 +107,21 @@ function removeTypingIndicator() {
     const indicator = document.getElementById('bot-typing-indicator');
     if (indicator) indicator.remove();
 }
-function handleChatSubmit(text) {
+async function handleChatSubmit(text) {
     if (!text.trim()) return;
     appendMessage('You', text, true);
     chatInput.value = '';
     showTypingIndicator();
+    if (hasApiKey()) {
+        try {
+            const aiReply = await askGeminiChef(text, state.ingredients);
+            removeTypingIndicator();
+            appendMessage('Chef Supriya', aiReply, false);
+            return;
+        } catch (err) {
+            console.warn("Gemini API call failed, falling back to local bot:", err);
+        }
+    }
     setTimeout(() => {
         removeTypingIndicator();
         const reply = generateBotReply(text, state.ingredients);
@@ -225,3 +236,41 @@ chatMessages.addEventListener('click', async (e) => {
     }
 });
 renderPantry();
+const apiModal = document.getElementById('api-modal');
+const apiKeyBtn = document.getElementById('api-key-btn');
+const apiModalClose = document.getElementById('api-modal-close');
+const apiKeyInput = document.getElementById('gemini-api-key-input');
+const apiKeySave = document.getElementById('api-key-save');
+const apiKeyClear = document.getElementById('api-key-clear');
+const botStatus = document.getElementById('bot-status');
+
+function updateBotStatus() {
+    if (hasApiKey()) {
+        botStatus.innerHTML = `<span class="status-dot ai-active"></span> Gemini AI Active`;
+    } else {
+        botStatus.innerHTML = `<span class="status-dot"></span> Ready in the kitchen (Offline)`;
+    }
+}
+apiKeyBtn.addEventListener('click', () => {
+    apiKeyInput.value = getSavedApiKey();
+    apiModal.classList.remove('hidden');
+});
+function closeApiModal() {
+    apiModal.classList.add('hidden');
+}
+apiModalClose.addEventListener('click', closeApiModal);
+apiModal.querySelector('.modal-backdrop').addEventListener('click', closeApiModal);
+apiKeySave.addEventListener('click', () => {
+    saveApiKey(apiKeyInput.value);
+    updateBotStatus();
+    closeApiModal();
+    appendMessage('Chef Supriya', 'Gemini AI is now connected! Ask me anything about cooking, pairings, or custom recipes.', false);
+});
+apiKeyClear.addEventListener('click', () => {
+    saveApiKey('');
+    apiKeyInput.value = '';
+    updateBotStatus();
+    closeApiModal();
+    appendMessage('Chef Supriya', 'Switched back to local offline mode.', false);
+});
+updateBotStatus();
