@@ -28,11 +28,19 @@ export async function askGeminiChef(userPrompt, currentIngredients =[]) {
             maxOutputTokens: 600
         }
     };
-    const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(payload)
-    });
+   let response = await fetch(endpoint, {
+       method: 'POST',
+       headers: {'Content-Type': 'application/json'},
+       body: JSON.stringify(payload)
+   });
+   if (response.status === 503) {
+       await new Promise(res => setTimeout(res, 1000));
+       response = await fetch(endpoint, {
+           method: 'POST',
+           headers: {'Content-Type': 'application/json'},
+           body: JSON.stringify(payload)
+       });
+   }
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error?.message || `Gemini API error (Status ${response.status})`);
