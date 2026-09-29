@@ -1,4 +1,4 @@
-import {getSavedApiKey, saveApiKey, hasApiKey, askGeminiChef} from "./gemini.js";
+import {askGeminiChef} from "./gemini.js";
 import {initTheme} from "./theme.js";
 import {loadPantry, savePantry} from "./storage.js";
 import {generateBotReply} from "./bot.js";
@@ -112,7 +112,7 @@ async function handleChatSubmit(text) {
     appendMessage('You', text, true);
     chatInput.value = '';
     showTypingIndicator();
-    if (hasApiKey()) {
+    if (state.isAiMode) {
         try {
             const aiReply = await askGeminiChef(text, state.ingredients);
             removeTypingIndicator();
@@ -236,41 +236,31 @@ chatMessages.addEventListener('click', async (e) => {
     }
 });
 renderPantry();
-const apiModal = document.getElementById('api-modal');
-const apiKeyBtn = document.getElementById('api-key-btn');
-const apiModalClose = document.getElementById('api-modal-close');
-const apiKeyInput = document.getElementById('gemini-api-key-input');
-const apiKeySave = document.getElementById('api-key-save');
-const apiKeyClear = document.getElementById('api-key-clear');
+const AI_MODE_KEY = 'pantrypal_ai_mode';
+state.isAiMode = localStorage.getItem(AI_MODE_KEY) !== 'false';
+const classicBtn = document.getElementById('mode-classic-btn');
+const aiBtn = document.getElementById('mode-ai-btn');
 const botStatus = document.getElementById('bot-status');
 
-function updateBotStatus() {
-    if (hasApiKey()) {
+function setChefMode(isAi) {
+    state.isAiMode = isAi;
+    localStorage.setItem(AI_MODE_KEY, String(isAi));
+    if (isAi) {
+        aiBtn.classList.add('active');
+        classicBtn?.classList.remove('active');
         botStatus.innerHTML = `<span class="status-dot ai-active"></span> Gemini AI Active`;
     } else {
-        botStatus.innerHTML = `<span class="status-dot"></span> Ready in the kitchen (Offline)`;
+        classicBtn?.classList.add('active');
+        aiBtn?.classList.remove('active');
+        botStatus.innerHTML = `<span class="status-dot"></span> Classic Mode (Local)`;
     }
 }
-apiKeyBtn.addEventListener('click', () => {
-    apiKeyInput.value = getSavedApiKey();
-    apiModal.classList.remove('hidden');
+classicBtn?.addEventListener('click', () => {
+    setChefMode(false);
+    appendMessage('Chef Supriya', 'Switched to **Classic Mode**. I will now use our local recipes and substitution guides.', false);
 });
-function closeApiModal() {
-    apiModal.classList.add('hidden');
-}
-apiModalClose.addEventListener('click', closeApiModal);
-apiModal.querySelector('.modal-backdrop').addEventListener('click', closeApiModal);
-apiKeySave.addEventListener('click', () => {
-    saveApiKey(apiKeyInput.value);
-    updateBotStatus();
-    closeApiModal();
-    appendMessage('Chef Supriya', 'Gemini AI is now connected! Ask me anything about cooking, pairings, or custom recipes.', false);
+aiBtn?.addEventListener('click', () => {
+    setChefMode(true);
+    appendMessage('Chef Supriya', 'Switched to **Smart AI Mode**. Powered by Gemini, I can now answer any custom cooking questions or invent new recipes!', false);
 });
-apiKeyClear.addEventListener('click', () => {
-    saveApiKey('');
-    apiKeyInput.value = '';
-    updateBotStatus();
-    closeApiModal();
-    appendMessage('Chef Supriya', 'Switched back to local offline mode.', false);
-});
-updateBotStatus();
+setChefMode(state.isAiMode);

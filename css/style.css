@@ -759,14 +759,22 @@ input[type="text"]:focus {
     color: var(--color-accent);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
-.api-settings-btn {
+.bot-mode-segmented {
     margin-left: auto;
-    background: var(--bg-surface-subtle);
+    display: inline-flex;
+    background-color: var(--bg-surface-subtle);
     border: 1px solid var(--border-subtle);
-    color: var(--color-muted);
+    border-radius: var(--radius-pill);
+    padding: 3px;
+    gap: 2px;
+}
+.mode-btn {
+    background: transparent;
+    border: none;
     font-family: var(--font-sans);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
+    color: var(--color-muted);
     padding: 0.35rem 0.75rem;
     border-radius: var(--radius-pill);
     cursor: pointer;
@@ -775,44 +783,28 @@ input[type="text"]:focus {
     gap: 0.3rem;
     transition: all 0.2s ease;
 }
-.api-settings-btn:hover {
+.mode-btn:hover {
     color: var(--color-text);
-    border-color: var(--color-primary);
+}
+.mode-btn.active#mode-classic-btn {
     background-color: var(--bg-surface);
+    color: var(--color-primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
-.api-modal-container {
-    max-width: 480px;
+.mode-btn.active#mode-ai-btn {
+    background-color: var(--bg-surface);
+    color: #8B5CF6;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
 }
-.api-help-text {
-    font-size: 0.92rem;
-    color: var(--color-muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.5;
+[data-theme="dark"] .mode-btn.active#mode-classic-btn {
+    background-color: var(--bg-surface);
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
-.api-input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
-}
-.api-input-group label {
-    font-size: 0.78rem;
-    color: var(--color-muted);
-    margin-top: 0.25rem;
-}
-.api-subtext {
-    font-size: 0.78rem;
-    color: var(--color-muted);
-    margin-top: 0.25rem;
-}
-.api-subtext a {
-    color: var(--color-muted);
-    text-decoration: underline;
-}
-.api-modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
+[data-theme="dark"] .mode-btn.active#mode-ai-btn {
+    background-color: var(--bg-surface);
+    color: #A78BFA;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35);
 }
 .status-dot.ai-active {
     background-color: #8B5CF6;
