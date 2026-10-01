@@ -1,6 +1,6 @@
 # PantryPal
 ## Overview
-PantryPal is a simple, beginner-friendly web companion built ot solve that problem. You just enter whatever ingredients you have in your kitchen, and it suggests what you can make, helps you swap out missing items, and guides you step-by-step through cokking with a built-in kitchen timer.
+PantryPal is a simple, beginner-friendly web companion built ot solve that problem. You just enter whatever ingredients you have in your kitchen, and it suggests what you can make, helps you swap out missing items, and guides you step-by-step through cooking with a built-in kitchen timer.
 
 Basically, instead of letting vegetables go bad, you put your ingredients on your digital shelf. PantryPal matches them with simple homestyle recipes, tells you what you can replace missing items with (like using yogurt instead of sour cream), and lets you chat with an AI chef when you want creative ideas.
 
@@ -20,8 +20,6 @@ Basically, instead of letting vegetables go bad, you put your ingredients on you
 **Light & Dark Kitchen Themes:** A toggle button at the top lets you easily switch between a warm paper daytime look and cozy, eye-friendly dark mode for late-night cooking.
 
 ## Known Bugs & Limitations
-**Offline AI Restriction:** The Smart AI mode needs an internet connection to reach Google Gemini. If your internet disconnects, it automatically falls back to Classic mode answers until you are back online.
-
 **Timer Sound Permission:** On modern web browsers, the timer sound plays if you have clicked somewhere on the page at least once during your visit (due to standard browser autoplay rules).
 
 **No Exact Measurements Yet:** The pantry tracks whether you have an ingredient or not (like "Onions" or "Rice"), but doesn't track exact quantities like "200 grams" or "2 cups".
@@ -42,7 +40,6 @@ Basically, instead of letting vegetables go bad, you put your ingredients on you
 3. **Find Recipes:** Click "Find Recipes" to see meals ranked by how many ingredients you already have.
 4. **Swap Missing Items:** Click on any missing ingredient button to see what you can replace it with.
 5. **Cook Step-by-Step:** Click "Start Cooking" to follow the recipe steps. Use the timer for boiling or frying, and navigate with you arrow keys.
-6. **Toggle Theme:** Click the Light/Dark switch at the top right anytime you want a darker screen.
 
 ## How to run locally
 1. **Clone the repository:** `git clone https://github.com/kumarisupriya-dev/PantryPal`
@@ -50,7 +47,7 @@ Basically, instead of letting vegetables go bad, you put your ingredients on you
 
 ## AI Usage
 * **Chatbot Integration:** Connected the Google Gemini API to give personalized cooking answers and recipe tips.
-* **Documentation:** Used AI to help clean us this README.
+* **Documentation:** Used AI to help with the structure of the Readme.
 
 ## Future Plans
 * **Grocery Receipt Scanner:** Let users snap a picture of their grocery bill to add ingredients to the shelf automatically.
@@ -59,7 +56,7 @@ Basically, instead of letting vegetables go bad, you put your ingredients on you
 * **Diet Filters:** Quick filters for Vegetarian, Vegan and Gluten-Free meals.
 
 ## Screenshots of the Project
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
